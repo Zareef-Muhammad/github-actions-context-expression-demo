@@ -1,0 +1,34 @@
+name: GitHUb Context and if EXpression Demo
+
+on: push
+
+jobs:
+  Docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkoutv6
+      - name: Docker Build
+        run: |
+          echo "Building Docker Image..."
+          echo "Branch: ${{ github.ref }}"
+          echo "Actor: ${{ github.actor}}"
+
+
+
+  Deploy:
+    runs-on: ubuntu-latest
+    needs: Docker
+    if: github.ref == 'ref/heads/main'
+    steps:
+      - name: Deploy to Production
+        run: |
+          echo "Deploying to Production!"
+          echo "This Runs Only On main Branch"
+
+
+  
+          
+
+    
+
