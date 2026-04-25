@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkoutv6
+        uses: actions/checkout@v6
       - name: Docker Build
         run: |
           echo "Building Docker Image..."
